@@ -5,26 +5,25 @@ knitr.table.format = "markdown"
 #' As always, remove all objects fromt the workspace before starting.
 rm(list = ls(all = TRUE))
 
-# setwd("C:/Users/hw3616/Desktop/Imperial/Project1_Forecasting/Project_Coding/iiag/forecasting_vivi")
-setwd("C:/Users/haowe/Desktop/iiag/forecasting_vivi")
+#' Set up your work directory
+# setwd()
 
-#' Pull in packages needed
-source("./functions/load_packages.R")
-
-pkgs <- c("xgboost", "stringr", "rasterVis", "cdcfluview", "hrbrthemes",
-          "dplyr", "ggplot2", "aweek")
-load_package(pkgs)
+library(xgboost)
+library(stringr)
+library(rasterVis)
+library(hrbrthemes)
+library(dplyr)
 
 source("./vivi_funcs.R")
 source("./gbm_complex_funcs.R")
 
 #' Load country list for WHO data.
-countryISO <- read.csv("C:/Users/haowe/Desktop/iiag/data_old/country_list_ISO.csv")
+countryISO <- read.csv("country_list_ISO.csv")
 
 #' Load WHO FluID data set.
 #' From 2010 week 1 to 2018 week 9 
 
-fluWHO <- load.iiag.data.fluid(datadir = "C:/Users/haowe/Desktop/iiag/data_old")
+fluWHO <- load.iiag.data.fluid(datadir = "data_old")
 
 #' Extract weekly incidence for raw WHO FluID dataset
 minprop <- 0.5
